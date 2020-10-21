@@ -6,7 +6,7 @@ import torch.optim as optim
 import os
 from config import load_config
 from preprocess import load_data
-from model import LambdaResNet18, get_n_params
+from model import LambdaResNet50, get_n_params
 
 
 def save_checkpoint(best_acc, model, optimizer, args, epoch):
@@ -71,7 +71,7 @@ def _eval(epoch, test_loader, model, args):
 
 def main(args):
     train_loader, test_loader = load_data(args)
-    model = LambdaResNet18()
+    model = LambdaResNet50()
     print('Model Parameters: {}'.format(get_n_params(model)))
 
     optimizer = optim.SGD(model.parameters(), lr=args.lr, weight_decay=args.weight_decay, momentum=args.momentum)
